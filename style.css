@@ -1,1 +1,381 @@
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+   :root {
+    --bg-principal: #0f172a;       /* Azul escuro ardósia (Premium) */
+    --bg-card: #1e293b;            /* Fundo dos cards e caixas */
+    --cor-acento: #38bdf8;         /* Azul celeste brilhante para links/botões */
+    --texto-principal: #f8fafc;    /* Branco suave para não cansar os olhos */
+    --texto-mutado: #94a3b8;       /* Cinza para subtítulos e textos secundários */
+    --borda: #334155;              /* Linhas divisórias sutis */
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transicao);
+}
+
+/* ==========================================================================
+   2. CABEÇALHO (HEADER) COM EFEITO BLUR
+   ========================================================================== */
+header {
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Suporte para Safari */
+    border-bottom: 1px solid var(--borda);
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transicao);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--cor-acento);
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--cor-acento);
+}
+
+/* Botão de Inscrição */
+.subscribe-btn {
+    background-color: var(--cor-acento);
+    color: var(--bg-principal);
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.subscribe-btn:hover {
+    background-color: #7dd3fc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+}
+
+/* ==========================================================================
+   3. ESTRUTURA PRINCIPAL E POST EM DESTAQUE (HERO)
+   ========================================================================== */
+.container {
+    max-width: 1240px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+.featured-post {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 35px;
+    margin-bottom: 60px;
+    background-color: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--borda);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: var(--transicao);
+}
+
+.featured-post:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.featured-img {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
+}
+
+.featured-content {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-tag {
+    color: var(--cor-acento);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.featured-title {
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+}
+
+.featured-title:hover {
+    color: var(--cor-acento);
+}
+
+.featured-excerpt {
+    color: var(--texto-mutado);
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.post-meta {
+    font-size: 13px;
+    color: var(--texto-mutado);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   4. SEÇÃO DE ARTIGOS RECENTES (GRID)
+   ========================================================================== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 45px;
+}
+
+.section-heading {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--borda);
+    letter-spacing: -0.3px;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+.article-card {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img {
+    width: 100%;
+    height: 210px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    object-fit: cover;
+    border: 1px solid var(--borda);
+    transition: var(--transicao);
+}
+
+.article-card:hover .card-img {
+    transform: translateY(-6px);
+    border-color: var(--cor-acento);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card-title {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.card-title:hover {
+    color: var(--cor-acento);
+}
+
+/* ==========================================================================
+   5. BARRA LATERAL (SIDEBAR)
+   ========================================================================== */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+/* Caixa de Captura de E-mail */
+.newsletter-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda);
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.newsletter-box h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.newsletter-box p {
+    color: var(--texto-mutado);
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.newsletter-box input {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--bg-principal);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 12px;
+    outline: none;
+    font-size: 14px;
+    transition: var(--transicao);
+}
+
+.newsletter-box input:focus {
+    border-color: var(--cor-acento);
+}
+
+.newsletter-box button {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--cor-acento);
+    color: var(--bg-principal);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.newsletter-box button:hover {
+    background-color: #7dd3fc;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+/* Lista de Em Destaque/Mais Lidas */
+.trending-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.trending-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.trending-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--borda);
+    line-height: 1;
+}
+
+.trending-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.trending-title:hover {
+    color: var(--cor-acento);
+}
+
+/* ==========================================================================
+   6. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+    margin-top: 100px;
+    border-top: 1px solid var(--borda);
+    padding: 50px 24px;
+    text-align: center;
+    color: var(--texto-mutado);
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+
+/* Quebra para Tablets e telas médias */
+@media (max-width: 992px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-img {
+        height: 280px;
+        min-height: auto;
+    }
+
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    header {
+        padding: 20px 5%;
+    }
+}
+
+/* Quebra para Celulares */
+@media (max-width: 600px) {
+    nav {
+        display: none; /* Esconde o menu de texto para adotar padrão mobile */
+    }
+
+    .featured-content {
+        padding: 25px;
+    }
+
+    .featured-title {
+        font-size: 26px;
+    }
+
+    .container {
+        padding: 0 16px;
+        margin: 20px auto;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr; /* Apenas 1 coluna de cards no celular */
+    }
+    
+    .newsletter-box {
+        padding: 25px;
+    }
+}
